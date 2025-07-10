@@ -1,3 +1,0 @@
-# rpi-core/requirements.txt
-streamlit
-pymongo
