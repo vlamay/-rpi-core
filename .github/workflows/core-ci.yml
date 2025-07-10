@@ -1,0 +1,16 @@
+name: Core CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build Docker image
+        run: docker build . --file Dockerfile --tag rpi-core:test
+      - name: Run container smoke test
+        run: |
+          docker run --rm rpi-core:test python -c "print('OK')"
